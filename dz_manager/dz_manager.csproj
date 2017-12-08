@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2F73674C-4746-4C71-80D2-8C6280875E0C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dz_manager</RootNamespace>
+    <AssemblyName>dz_manager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DlgAddDesk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgAddDesk.Designer.cs">
+      <DependentUpon>DlgAddDesk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinAddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinAddMember.Designer.cs">
+      <DependentUpon>WinAddMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinAddScoreManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinAddScoreManage.Designer.cs">
+      <DependentUpon>WinAddScoreManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDailyProfit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDailyProfit.Designer.cs">
+      <DependentUpon>WinDailyProfit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBConfig.Designer.cs">
+      <DependentUpon>DBConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDeskManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDeskManager.Designer.cs">
+      <DependentUpon>WinDeskManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinDeskProfit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinDeskProfit.Designer.cs">
+      <DependentUpon>WinDeskProfit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinMain.Designer.cs">
+      <DependentUpon>WinMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIMain.Designer.cs">
+      <DependentUpon>MDIMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinMemberQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinMemberQuery.Designer.cs">
+      <DependentUpon>WinMemberQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinProxerProfit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinProxerProfit.Designer.cs">
+      <DependentUpon>WinProxerProfit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinProxyAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinProxyAdd.Designer.cs">
+      <DependentUpon>WinProxyAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinProxyQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinProxyQuery.Designer.cs">
+      <DependentUpon>WinProxyQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinSettleAddScore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinSettleAddScore.Designer.cs">
+      <DependentUpon>WinSettleAddScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUserInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUserInput.Designer.cs">
+      <DependentUpon>WinUserInput.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DlgAddDesk.resx">
+      <DependentUpon>DlgAddDesk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinAddMember.resx">
+      <DependentUpon>WinAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinAddScoreManage.resx">
+      <DependentUpon>WinAddScoreManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDailyProfit.resx">
+      <DependentUpon>WinDailyProfit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBConfig.resx">
+      <DependentUpon>DBConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDeskManager.resx">
+      <DependentUpon>WinDeskManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinDeskProfit.resx">
+      <DependentUpon>WinDeskProfit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinMain.resx">
+      <DependentUpon>WinMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIMain.resx">
+      <DependentUpon>MDIMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="WinMemberQuery.resx">
+      <DependentUpon>WinMemberQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinProxerProfit.resx">
+      <DependentUpon>WinProxerProfit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinProxyAdd.resx">
+      <DependentUpon>WinProxyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinProxyQuery.resx">
+      <DependentUpon>WinProxyQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinSettleAddScore.resx">
+      <DependentUpon>WinSettleAddScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUserInput.resx">
+      <DependentUpon>WinUserInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\img_search_1.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
