@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace dz_manager
 {
-    public partial class WinProxerProfit : Form
+    public partial class WinProxerProfit : SuperForm
     {
         public WinProxerProfit()
         {

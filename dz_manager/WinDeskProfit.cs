@@ -10,9 +10,8 @@ using System.Windows.Forms;
 
 namespace dz_manager
 {
-    public partial class WinDeskProfit : Form
+    public partial class WinDeskProfit : SuperForm
     {
-        DataGridView
         public WinDeskProfit()
         {
             InitializeComponent();

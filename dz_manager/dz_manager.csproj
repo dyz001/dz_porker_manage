@@ -51,6 +51,9 @@
     <Compile Include="DlgAddDesk.Designer.cs">
       <DependentUpon>DlgAddDesk.cs</DependentUpon>
     </Compile>
+    <Compile Include="SuperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WinAddMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +89,12 @@
     </Compile>
     <Compile Include="WinDeskProfit.Designer.cs">
       <DependentUpon>WinDeskProfit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinLogin.Designer.cs">
+      <DependentUpon>WinLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="WinMain.cs">
       <SubType>Form</SubType>
@@ -131,12 +140,6 @@
     <Compile Include="WinSettleAddScore.Designer.cs">
       <DependentUpon>WinSettleAddScore.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinUserInput.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinUserInput.Designer.cs">
-      <DependentUpon>WinUserInput.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="DlgAddDesk.resx">
       <DependentUpon>DlgAddDesk.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +161,9 @@
     <EmbeddedResource Include="WinDeskProfit.resx">
       <DependentUpon>WinDeskProfit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinLogin.resx">
+      <DependentUpon>WinLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinMain.resx">
       <DependentUpon>WinMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +178,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="WinMemberQuery.resx">
       <DependentUpon>WinMemberQuery.cs</DependentUpon>
@@ -188,9 +195,6 @@
     <EmbeddedResource Include="WinSettleAddScore.resx">
       <DependentUpon>WinSettleAddScore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinUserInput.resx">
-      <DependentUpon>WinUserInput.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -205,7 +209,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\buttons\rdo_down.bmp" />
     <Content Include="images\img_search_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

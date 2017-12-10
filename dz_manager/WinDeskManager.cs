@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace dz_manager
 {
-    public partial class WinDeskManager : Form
+    public partial class WinDeskManager : SuperForm
     {
         public WinDeskManager()
         {

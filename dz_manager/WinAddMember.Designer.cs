@@ -30,8 +30,8 @@
         {
             this.flp_main = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl_row = new System.Windows.Forms.Panel();
-            this.lbl_gameid = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_gameid = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_wx_id = new System.Windows.Forms.TextBox();
             this.lbl_wx_id = new System.Windows.Forms.Label();
@@ -69,7 +69,7 @@
             this.flp_main.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_main.Location = new System.Drawing.Point(74, 23);
             this.flp_main.Name = "flp_main";
-            this.flp_main.Size = new System.Drawing.Size(530, 347);
+            this.flp_main.Size = new System.Drawing.Size(530, 301);
             this.flp_main.TabIndex = 0;
             // 
             // pnl_row
@@ -81,6 +81,13 @@
             this.pnl_row.Size = new System.Drawing.Size(527, 35);
             this.pnl_row.TabIndex = 0;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(201, 7);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(193, 21);
+            this.textBox1.TabIndex = 1;
+            // 
             // lbl_gameid
             // 
             this.lbl_gameid.AutoSize = true;
@@ -89,13 +96,6 @@
             this.lbl_gameid.Size = new System.Drawing.Size(83, 12);
             this.lbl_gameid.TabIndex = 0;
             this.lbl_gameid.Text = "请输入游戏ID:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(201, 7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 21);
-            this.textBox1.TabIndex = 1;
             // 
             // panel1
             // 
@@ -248,6 +248,7 @@
             this.Controls.Add(this.btn_add_continue);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.flp_main);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinAddMember";

@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btn_ok = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btn_ok
+            // 
+            this.btn_ok.Location = new System.Drawing.Point(314, 350);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(75, 23);
+            this.btn_ok.TabIndex = 0;
+            this.btn_ok.Text = "确定";
+            this.btn_ok.UseVisualStyleBackColor = true;
             // 
             // WinSettleAddScore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 427);
+            this.Controls.Add(this.btn_ok);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinSettleAddScore";
@@ -44,5 +56,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btn_ok;
     }
 }

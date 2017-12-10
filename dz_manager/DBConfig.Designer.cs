@@ -67,6 +67,7 @@
             this.btn_close.TabIndex = 2;
             this.btn_close.Text = "关闭";
             this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // txt_host
             // 
@@ -148,8 +149,12 @@
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_test);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DBConfig";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DBConfig";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

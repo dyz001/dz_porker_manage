@@ -28,35 +28,127 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.pnl_win = new System.Windows.Forms.Panel();
+            this.rdo_add_score = new System.Windows.Forms.RadioButton();
+            this.gpb_top_btns = new System.Windows.Forms.GroupBox();
+            this.rdo_data_query = new System.Windows.Forms.RadioButton();
+            this.rdo_member_mgr = new System.Windows.Forms.RadioButton();
+            this.rdo_proxy_mgr = new System.Windows.Forms.RadioButton();
+            this.gpb_add_score = new System.Windows.Forms.GroupBox();
+            this.gpb_top_btns.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // pnl_win
             // 
-            this.button1.Location = new System.Drawing.Point(53, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.pnl_win.Location = new System.Drawing.Point(172, 93);
+            this.pnl_win.Name = "pnl_win";
+            this.pnl_win.Size = new System.Drawing.Size(743, 636);
+            this.pnl_win.TabIndex = 1;
+            // 
+            // rdo_add_score
+            // 
+            this.rdo_add_score.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdo_add_score.AutoSize = true;
+            this.rdo_add_score.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.rdo_add_score.Location = new System.Drawing.Point(18, 20);
+            this.rdo_add_score.Name = "rdo_add_score";
+            this.rdo_add_score.Size = new System.Drawing.Size(69, 22);
+            this.rdo_add_score.TabIndex = 0;
+            this.rdo_add_score.TabStop = true;
+            this.rdo_add_score.Text = "上分管理 ";
+            this.rdo_add_score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdo_add_score.UseVisualStyleBackColor = false;
+            this.rdo_add_score.CheckedChanged += new System.EventHandler(this.rdo_add_score_CheckedChanged);
+            // 
+            // gpb_top_btns
+            // 
+            this.gpb_top_btns.Controls.Add(this.rdo_data_query);
+            this.gpb_top_btns.Controls.Add(this.rdo_member_mgr);
+            this.gpb_top_btns.Controls.Add(this.rdo_proxy_mgr);
+            this.gpb_top_btns.Controls.Add(this.rdo_add_score);
+            this.gpb_top_btns.Location = new System.Drawing.Point(23, 10);
+            this.gpb_top_btns.Name = "gpb_top_btns";
+            this.gpb_top_btns.Size = new System.Drawing.Size(911, 56);
+            this.gpb_top_btns.TabIndex = 2;
+            this.gpb_top_btns.TabStop = false;
+            // 
+            // rdo_data_query
+            // 
+            this.rdo_data_query.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdo_data_query.AutoSize = true;
+            this.rdo_data_query.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.rdo_data_query.Location = new System.Drawing.Point(661, 20);
+            this.rdo_data_query.Name = "rdo_data_query";
+            this.rdo_data_query.Size = new System.Drawing.Size(63, 22);
+            this.rdo_data_query.TabIndex = 3;
+            this.rdo_data_query.TabStop = true;
+            this.rdo_data_query.Text = "数据查询";
+            this.rdo_data_query.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdo_data_query.UseVisualStyleBackColor = false;
+            // 
+            // rdo_member_mgr
+            // 
+            this.rdo_member_mgr.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdo_member_mgr.AutoSize = true;
+            this.rdo_member_mgr.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.rdo_member_mgr.Location = new System.Drawing.Point(421, 17);
+            this.rdo_member_mgr.Name = "rdo_member_mgr";
+            this.rdo_member_mgr.Size = new System.Drawing.Size(69, 22);
+            this.rdo_member_mgr.TabIndex = 2;
+            this.rdo_member_mgr.TabStop = true;
+            this.rdo_member_mgr.Text = "会员管理 ";
+            this.rdo_member_mgr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdo_member_mgr.UseVisualStyleBackColor = false;
+            // 
+            // rdo_proxy_mgr
+            // 
+            this.rdo_proxy_mgr.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdo_proxy_mgr.AutoSize = true;
+            this.rdo_proxy_mgr.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.rdo_proxy_mgr.Location = new System.Drawing.Point(207, 20);
+            this.rdo_proxy_mgr.Name = "rdo_proxy_mgr";
+            this.rdo_proxy_mgr.Size = new System.Drawing.Size(69, 22);
+            this.rdo_proxy_mgr.TabIndex = 1;
+            this.rdo_proxy_mgr.TabStop = true;
+            this.rdo_proxy_mgr.Text = "代理管理 ";
+            this.rdo_proxy_mgr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdo_proxy_mgr.UseVisualStyleBackColor = false;
+            // 
+            // gpb_add_score
+            // 
+            this.gpb_add_score.Location = new System.Drawing.Point(23, 84);
+            this.gpb_add_score.Name = "gpb_add_score";
+            this.gpb_add_score.Size = new System.Drawing.Size(106, 645);
+            this.gpb_add_score.TabIndex = 3;
+            this.gpb_add_score.TabStop = false;
             // 
             // WinMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 564);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(962, 756);
+            this.Controls.Add(this.gpb_add_score);
+            this.Controls.Add(this.gpb_top_btns);
+            this.Controls.Add(this.pnl_win);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "WinMain";
-            this.Text = "Form1";
+            this.Text = "德扑圈积分管理系统";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.gpb_top_btns.ResumeLayout(false);
+            this.gpb_top_btns.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel pnl_win;
+        private System.Windows.Forms.RadioButton rdo_add_score;
+        private System.Windows.Forms.GroupBox gpb_top_btns;
+        private System.Windows.Forms.RadioButton rdo_proxy_mgr;
+        private System.Windows.Forms.RadioButton rdo_member_mgr;
+        private System.Windows.Forms.RadioButton rdo_data_query;
+        private System.Windows.Forms.GroupBox gpb_add_score;
     }
 }
 

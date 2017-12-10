@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace dz_manager
 {
-    public partial class WinDailyProfit : Form
+    public partial class WinDailyProfit : SuperForm
     {
         public WinDailyProfit()
         {

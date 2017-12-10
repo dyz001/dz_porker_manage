@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace dz_manager
 {
-    public partial class WinProxyAdd : Form
+    public partial class WinProxyAdd : SuperForm
     {
         public WinProxyAdd()
         {

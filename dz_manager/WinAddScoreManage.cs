@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace dz_manager
 {
-    public partial class WinAddScoreManage : Form
+    public partial class WinAddScoreManage : SuperForm
     {
         public WinAddScoreManage()
         {

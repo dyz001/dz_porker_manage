@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace dz_manager
 {
-    public partial class WinMemberQuery : Form
+    public partial class WinMemberQuery : SuperForm
     {
         public WinMemberQuery()
         {

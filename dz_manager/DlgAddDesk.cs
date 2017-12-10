@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace dz_manager
 {
-    public partial class DlgAddDesk : Form
+    public partial class DlgAddDesk : SuperForm
     {
         public DlgAddDesk()
         {

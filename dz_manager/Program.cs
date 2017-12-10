@@ -16,7 +16,7 @@ namespace dz_manager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WinMain());
+            Application.Run(new WinLogin());
         }
     }
 }
