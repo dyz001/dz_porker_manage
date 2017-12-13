@@ -98,7 +98,7 @@ using System.Reflection;
                 return "'" + (value==null ? "1970-01-01 00:00:00" :
                     ((DateTime)value).ToString("yyyy-MM-dd HH:mm:ss")) + "'";
             }
-            TextLogger.LogError("not found datatype:" + dataType);
+            //TextLogger.LogError("not found datatype:" + dataType);
             return "";
         }
 

@@ -39,6 +39,8 @@
             this.lbl_db_name = new System.Windows.Forms.Label();
             this.lbl_username = new System.Windows.Forms.Label();
             this.lbl_pwd = new System.Windows.Forms.Label();
+            this.lbl_port = new System.Windows.Forms.Label();
+            this.txt_port = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_test
@@ -49,6 +51,7 @@
             this.btn_test.TabIndex = 0;
             this.btn_test.Text = "测试连接";
             this.btn_test.UseVisualStyleBackColor = true;
+            this.btn_test.Click += new System.EventHandler(this.btn_test_Click);
             // 
             // btn_save
             // 
@@ -58,6 +61,7 @@
             this.btn_save.TabIndex = 1;
             this.btn_save.Text = "保存";
             this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_close
             // 
@@ -133,11 +137,29 @@
             this.lbl_pwd.TabIndex = 10;
             this.lbl_pwd.Text = "密码:";
             // 
+            // lbl_port
+            // 
+            this.lbl_port.AutoSize = true;
+            this.lbl_port.Location = new System.Drawing.Point(384, 52);
+            this.lbl_port.Name = "lbl_port";
+            this.lbl_port.Size = new System.Drawing.Size(41, 12);
+            this.lbl_port.TabIndex = 11;
+            this.lbl_port.Text = "端口：";
+            // 
+            // txt_port
+            // 
+            this.txt_port.Location = new System.Drawing.Point(429, 46);
+            this.txt_port.Name = "txt_port";
+            this.txt_port.Size = new System.Drawing.Size(100, 21);
+            this.txt_port.TabIndex = 12;
+            // 
             // DBConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 262);
+            this.Controls.Add(this.txt_port);
+            this.Controls.Add(this.lbl_port);
             this.Controls.Add(this.lbl_pwd);
             this.Controls.Add(this.lbl_username);
             this.Controls.Add(this.lbl_db_name);
@@ -173,5 +195,7 @@
         private System.Windows.Forms.Label lbl_db_name;
         private System.Windows.Forms.Label lbl_username;
         private System.Windows.Forms.Label lbl_pwd;
+        private System.Windows.Forms.Label lbl_port;
+        private System.Windows.Forms.TextBox txt_port;
     }
 }

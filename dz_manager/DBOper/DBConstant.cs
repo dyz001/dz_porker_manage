@@ -19,7 +19,6 @@ namespace DataInput.DBOper
         protected static DBUtil m_Instance;
         protected MySqlCommand m_myCommand;
         protected MySqlDataReader m_myReader;
-        protected List<station> m_lstStation;
         protected bool m_bStationDirty = true;
         public static DBUtil GetInstance()
         {
@@ -34,8 +33,27 @@ namespace DataInput.DBOper
 
         protected void InitData()
         {
-            m_lstStation = new List<station>();
+            //m_lstStation = new List<station>();
         }
+
+        public static bool TryOpenDB(dz_manager.DBConfig.DBAuthData auth_data)
+        {
+            bool ret = true;
+            string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, auth_data.DBPass, auth_data.DBName, auth_data.DBPort, "UTF-8");
+            MySqlConnection con = new MySqlConnection(connStr);
+            try
+            {
+                con.Open();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            con.Close();
+            return ret;
+        }
+
         protected void InitDB()
         {
             //init varables
