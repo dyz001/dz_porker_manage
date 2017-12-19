@@ -41,6 +41,7 @@
             this.lbl_pwd = new System.Windows.Forms.Label();
             this.lbl_port = new System.Windows.Forms.Label();
             this.txt_port = new System.Windows.Forms.TextBox();
+            this.lbl_con_result = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_test
@@ -100,6 +101,7 @@
             this.txt_pwd.Name = "txt_pwd";
             this.txt_pwd.Size = new System.Drawing.Size(100, 21);
             this.txt_pwd.TabIndex = 6;
+            this.txt_pwd.UseSystemPasswordChar = true;
             // 
             // lbl_host
             // 
@@ -153,11 +155,20 @@
             this.txt_port.Size = new System.Drawing.Size(100, 21);
             this.txt_port.TabIndex = 12;
             // 
+            // lbl_con_result
+            // 
+            this.lbl_con_result.AutoSize = true;
+            this.lbl_con_result.Location = new System.Drawing.Point(138, 238);
+            this.lbl_con_result.Name = "lbl_con_result";
+            this.lbl_con_result.Size = new System.Drawing.Size(0, 12);
+            this.lbl_con_result.TabIndex = 13;
+            // 
             // DBConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 262);
+            this.Controls.Add(this.lbl_con_result);
             this.Controls.Add(this.txt_port);
             this.Controls.Add(this.lbl_port);
             this.Controls.Add(this.lbl_pwd);
@@ -197,5 +208,6 @@
         private System.Windows.Forms.Label lbl_pwd;
         private System.Windows.Forms.Label lbl_port;
         private System.Windows.Forms.TextBox txt_port;
+        private System.Windows.Forms.Label lbl_con_result;
     }
 }

@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_username = new System.Windows.Forms.Label();
             this.lbl_password = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_username = new System.Windows.Forms.TextBox();
+            this.txt_password = new System.Windows.Forms.TextBox();
             this.btn_login = new System.Windows.Forms.Button();
             this.btn_db_set = new System.Windows.Forms.Button();
+            this.lbl_status = new System.Windows.Forms.Label();
+            this.tm_check = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lbl_username
@@ -54,19 +57,19 @@
             this.lbl_password.TabIndex = 1;
             this.lbl_password.Text = "密码：";
             // 
-            // textBox1
+            // txt_username
             // 
-            this.textBox1.Location = new System.Drawing.Point(199, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 21);
-            this.textBox1.TabIndex = 2;
+            this.txt_username.Location = new System.Drawing.Point(199, 52);
+            this.txt_username.Name = "txt_username";
+            this.txt_username.Size = new System.Drawing.Size(164, 21);
+            this.txt_username.TabIndex = 2;
             // 
-            // textBox2
+            // txt_password
             // 
-            this.textBox2.Location = new System.Drawing.Point(199, 104);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 21);
-            this.textBox2.TabIndex = 3;
+            this.txt_password.Location = new System.Drawing.Point(199, 104);
+            this.txt_password.Name = "txt_password";
+            this.txt_password.Size = new System.Drawing.Size(164, 21);
+            this.txt_password.TabIndex = 3;
             // 
             // btn_login
             // 
@@ -88,15 +91,28 @@
             this.btn_db_set.UseVisualStyleBackColor = true;
             this.btn_db_set.Click += new System.EventHandler(this.btn_db_set_Click);
             // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.Location = new System.Drawing.Point(117, 148);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(0, 12);
+            this.lbl_status.TabIndex = 6;
+            // 
+            // tm_check
+            // 
+            this.tm_check.Tick += new System.EventHandler(this.tm_check_Tick);
+            // 
             // WinLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 262);
+            this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.btn_db_set);
             this.Controls.Add(this.btn_login);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_password);
+            this.Controls.Add(this.txt_username);
             this.Controls.Add(this.lbl_password);
             this.Controls.Add(this.lbl_username);
             this.MaximizeBox = false;
@@ -114,9 +130,11 @@
 
         private System.Windows.Forms.Label lbl_username;
         private System.Windows.Forms.Label lbl_password;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_username;
+        private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Button btn_db_set;
+        private System.Windows.Forms.Label lbl_status;
+        private System.Windows.Forms.Timer tm_check;
     }
 }

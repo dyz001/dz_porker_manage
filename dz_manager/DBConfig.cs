@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using DataInput.DBOper;
 
 namespace dz_manager
 {
@@ -25,8 +26,25 @@ namespace dz_manager
             public string DBPort { get; set; }
         }
         protected DBAuthData db_auth_data;
-        public DBConfig()
+        protected static DBConfig m_instance;
+
+        public static DBConfig GetInstance()
         {
+            if(m_instance == null)
+            {
+                m_instance = new DBConfig();
+            }
+            return m_instance;
+        }
+
+        public DBAuthData GetDBAuthData()
+        {
+            return db_auth_data;
+        }
+
+        protected DBConfig()
+        {
+            m_instance = this;
             InitializeComponent();
             if(!File.Exists(db_file))
             {
@@ -36,6 +54,10 @@ namespace dz_manager
             else
             {
                 db_auth_data = DeserializeObject<DBAuthData>(File.ReadAllText(db_file));
+                if(db_auth_data == null)
+                {
+                    db_auth_data = new DBAuthData();
+                }
             }
             InitForm();
         }
@@ -72,10 +94,20 @@ namespace dz_manager
             {
                 MessageBox.Show("信息填写不完整");
             }
+            db_auth_data.DBPort = txt_port.Text;
+            db_auth_data.DBHost = txt_host.Text;
+            db_auth_data.DBName = txt_db.Text;
+            db_auth_data.DBPass = txt_pwd.Text;
+            db_auth_data.DBUser = txt_username.Text;
             if(DBUtil.TryOpenDB(db_auth_data))
             {
-
+                lbl_con_result.Text = "连接成功";
             }
+            else
+            {
+                lbl_con_result.Text = "连接失败";
+            }
+
         }
 
         private void btn_save_Click(object sender, EventArgs e)

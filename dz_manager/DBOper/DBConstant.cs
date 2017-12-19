@@ -1,5 +1,4 @@
-﻿using Model;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,32 +13,44 @@ namespace DataInput.DBOper
     public class DBUtil
     {
         protected MySqlConnection m_mysqlConn;
-        protected const string m_connFormatStr = "server={0};uid={1};pwd={2};database={3};port={4};CharSet={5}";
+        protected const string m_connFormatStr = "server={0};uid={1};pwd={2};database={3};port={4};";
         //protected const string m_create
         protected static DBUtil m_Instance;
         protected MySqlCommand m_myCommand;
         protected MySqlDataReader m_myReader;
+        protected static dz_manager.DBConfig.DBAuthData m_auth_data;
         protected bool m_bStationDirty = true;
+
+        public static void SetMysqlAuth(dz_manager.DBConfig.DBAuthData auth_data)
+        {
+            m_auth_data = auth_data;
+        }
         public static DBUtil GetInstance()
         {
             if(m_Instance == null)
             {
                 m_Instance = new DBUtil();
                 m_Instance.InitData();
-                m_Instance.InitDB();
             }
             return m_Instance;
         }
 
         protected void InitData()
         {
+            dz_manager.DBConfig.DBAuthData auth_data = m_auth_data;
+            if (auth_data == null) return;
             //m_lstStation = new List<station>();
+            if(m_mysqlConn == null)
+            {
+                string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, auth_data.DBPass, auth_data.DBName, auth_data.DBPort);
+                m_mysqlConn = new MySqlConnection(connStr);
+            }
         }
 
         public static bool TryOpenDB(dz_manager.DBConfig.DBAuthData auth_data)
         {
             bool ret = true;
-            string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, auth_data.DBPass, auth_data.DBName, auth_data.DBPort, "UTF-8");
+            string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, auth_data.DBPass, auth_data.DBName, auth_data.DBPort);
             MySqlConnection con = new MySqlConnection(connStr);
             try
             {
@@ -53,41 +64,12 @@ namespace DataInput.DBOper
             con.Close();
             return ret;
         }
-
-        protected void InitDB()
-        {
-            //init varables
-            if(m_mysqlConn == null)
-            {
-                string filePath = "Config/config.xml";
-                string connStr = string.Format(m_connFormatStr,
-                    XMLHelper.GetXmlAttribute(filePath, "//Config//DBParam", "server").Value,
-                    XMLHelper.GetXmlAttribute(filePath, "//Config//DBParam", "uid").Value,
-                    XMLHelper.GetXmlAttribute(filePath, "//Config/DBParam", "pwd").Value,
-                    XMLHelper.GetXmlAttribute(filePath, "//Config/DBParam", "database").Value,
-                    XMLHelper.GetXmlAttribute(filePath, "//Config/DBParam", "port").Value,
-                    XMLHelper.GetXmlAttribute(filePath, "//Config/DBParam", "CharSet").Value);
-                m_mysqlConn = new MySqlConnection(connStr);
-            }
-            try
-            {
-                if (m_mysqlConn.State == ConnectionState.Open)
-                {
-                    m_myCommand = new MySqlCommand();
-                    m_myCommand.Connection = m_mysqlConn;
-                }
-                else m_mysqlConn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Exception: " + ex.Message);
-            }
-        }
+    
         protected bool ExcuteNoQuery(string sql)
         {
             if(m_mysqlConn.IsPasswordExpired)
             {
-                InitDB();
+                
             }
             m_myCommand.CommandText = sql;
             m_myCommand.CommandType = System.Data.CommandType.Text;
@@ -282,18 +264,7 @@ namespace DataInput.DBOper
             return ret > 0;
         }
 
-        public IList<station> GetStations()
-        {
-            IList<station> ret = null;
-            if (m_bStationDirty)
-            {
-                m_lstStation.Clear();
-                m_lstStation.AddRange(GetLstItems<station>());
-                m_bStationDirty = false;
-            }
-            ret = m_lstStation;
-            return ret;
-        }
+      
 
         public void SetStationDirty(bool param)
         {

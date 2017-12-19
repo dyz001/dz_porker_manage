@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dz_manager</RootNamespace>
     <AssemblyName>dz_manager</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.3</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,18 @@
     <Reference Include="MySql.Data">
       <HintPath>..\dll\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data.Entity.EF6">
+      <HintPath>..\dll\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySQL.Data.EntityFrameworkCore">
+      <HintPath>..\dll\MySQL.Data.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="MySQL.Data.EntityFrameworkCore.Design">
+      <HintPath>..\dll\MySQL.Data.EntityFrameworkCore.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web">
+      <HintPath>..\dll\MySql.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\UpdateTools\dll\Newtonsoft.Json.dll</HintPath>
@@ -52,6 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant.cs" />
+    <Compile Include="DataManager.cs" />
     <Compile Include="DBOper\DataHelper.cs" />
     <Compile Include="DBOper\DBConstant.cs" />
     <Compile Include="DBOper\ReflectionHelper.cs" />
@@ -63,6 +78,8 @@
     <Compile Include="DlgAddDesk.Designer.cs">
       <DependentUpon>DlgAddDesk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\editable\auth_user.cs" />
+    <Compile Include="Model\internal\auth_user.cs" />
     <Compile Include="SuperForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +169,12 @@
     <Compile Include="WinSettleAddScore.Designer.cs">
       <DependentUpon>WinSettleAddScore.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinStatus.Designer.cs">
+      <DependentUpon>WinStatus.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DlgAddDesk.resx">
       <DependentUpon>DlgAddDesk.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +230,9 @@
     <EmbeddedResource Include="WinSettleAddScore.resx">
       <DependentUpon>WinSettleAddScore.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinStatus.resx">
+      <DependentUpon>WinStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -225,7 +251,6 @@
     <Content Include="images\img_search_1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
