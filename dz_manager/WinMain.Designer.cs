@@ -42,7 +42,7 @@
             // 
             this.pnl_win.Location = new System.Drawing.Point(172, 93);
             this.pnl_win.Name = "pnl_win";
-            this.pnl_win.Size = new System.Drawing.Size(743, 636);
+            this.pnl_win.Size = new System.Drawing.Size(780, 630);
             this.pnl_win.TabIndex = 1;
             // 
             // rdo_add_score
@@ -50,9 +50,10 @@
             this.rdo_add_score.Appearance = System.Windows.Forms.Appearance.Button;
             this.rdo_add_score.AutoSize = true;
             this.rdo_add_score.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.rdo_add_score.Location = new System.Drawing.Point(18, 20);
+            this.rdo_add_score.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdo_add_score.Location = new System.Drawing.Point(44, 13);
             this.rdo_add_score.Name = "rdo_add_score";
-            this.rdo_add_score.Size = new System.Drawing.Size(69, 22);
+            this.rdo_add_score.Size = new System.Drawing.Size(144, 37);
             this.rdo_add_score.TabIndex = 0;
             this.rdo_add_score.TabStop = true;
             this.rdo_add_score.Text = "上分管理 ";
@@ -77,9 +78,10 @@
             this.rdo_data_query.Appearance = System.Windows.Forms.Appearance.Button;
             this.rdo_data_query.AutoSize = true;
             this.rdo_data_query.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.rdo_data_query.Location = new System.Drawing.Point(661, 20);
+            this.rdo_data_query.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdo_data_query.Location = new System.Drawing.Point(687, 13);
             this.rdo_data_query.Name = "rdo_data_query";
-            this.rdo_data_query.Size = new System.Drawing.Size(63, 22);
+            this.rdo_data_query.Size = new System.Drawing.Size(130, 37);
             this.rdo_data_query.TabIndex = 3;
             this.rdo_data_query.TabStop = true;
             this.rdo_data_query.Text = "数据查询";
@@ -91,9 +93,10 @@
             this.rdo_member_mgr.Appearance = System.Windows.Forms.Appearance.Button;
             this.rdo_member_mgr.AutoSize = true;
             this.rdo_member_mgr.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.rdo_member_mgr.Location = new System.Drawing.Point(421, 17);
+            this.rdo_member_mgr.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdo_member_mgr.Location = new System.Drawing.Point(447, 10);
             this.rdo_member_mgr.Name = "rdo_member_mgr";
-            this.rdo_member_mgr.Size = new System.Drawing.Size(69, 22);
+            this.rdo_member_mgr.Size = new System.Drawing.Size(144, 37);
             this.rdo_member_mgr.TabIndex = 2;
             this.rdo_member_mgr.TabStop = true;
             this.rdo_member_mgr.Text = "会员管理 ";
@@ -105,9 +108,10 @@
             this.rdo_proxy_mgr.Appearance = System.Windows.Forms.Appearance.Button;
             this.rdo_proxy_mgr.AutoSize = true;
             this.rdo_proxy_mgr.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.rdo_proxy_mgr.Location = new System.Drawing.Point(207, 20);
+            this.rdo_proxy_mgr.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdo_proxy_mgr.Location = new System.Drawing.Point(233, 13);
             this.rdo_proxy_mgr.Name = "rdo_proxy_mgr";
-            this.rdo_proxy_mgr.Size = new System.Drawing.Size(69, 22);
+            this.rdo_proxy_mgr.Size = new System.Drawing.Size(144, 37);
             this.rdo_proxy_mgr.TabIndex = 1;
             this.rdo_proxy_mgr.TabStop = true;
             this.rdo_proxy_mgr.Text = "代理管理 ";
@@ -118,7 +122,7 @@
             // 
             this.gpb_add_score.Location = new System.Drawing.Point(23, 84);
             this.gpb_add_score.Name = "gpb_add_score";
-            this.gpb_add_score.Size = new System.Drawing.Size(106, 645);
+            this.gpb_add_score.Size = new System.Drawing.Size(146, 645);
             this.gpb_add_score.TabIndex = 3;
             this.gpb_add_score.TabStop = false;
             // 
@@ -126,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 756);
+            this.ClientSize = new System.Drawing.Size(991, 756);
             this.Controls.Add(this.gpb_add_score);
             this.Controls.Add(this.gpb_top_btns);
             this.Controls.Add(this.pnl_win);

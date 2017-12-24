@@ -89,12 +89,18 @@ using System.Reflection;
             {
                 return "'" + (value == null ? "" : value.ToString()) + "'";
             }
-            if(dataType == typeof(UInt32) || dataType == typeof(double) || dataType == typeof(int))
+            if(dataType == typeof(UInt32) || dataType == typeof(double) || dataType == typeof(int)
+                || dataType == typeof(UInt32?) || dataType == typeof(double?) || dataType == typeof(int?))
             {
+                if(value == null)
+                {
+                    return "0";
+                }
                 return value.ToString();
             }
-            if(dataType == typeof(DateTime))
+            if(dataType == typeof(DateTime) || dataType == typeof(DateTime?))
             {
+                if (value == null) return "null";
                 return "'" + (value==null ? "1970-01-01 00:00:00" :
                     ((DateTime)value).ToString("yyyy-MM-dd HH:mm:ss")) + "'";
             }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using DataInput.DBOper;
+
 
 namespace dz_manager
 {
@@ -17,6 +19,16 @@ namespace dz_manager
         public static void SetAuthUser(auth_user auth_data)
         {
             user_info = auth_data;
+        }
+
+        public static IList<choushui> GetChouShuiList()
+        {
+            return DBUtil.GetInstance().GetLstItems<choushui>();
+        }
+
+        public static IList<fanshui> GetFanShuiList()
+        {
+            return DBUtil.GetInstance().GetLstItems<fanshui>();
         }
     }
 }

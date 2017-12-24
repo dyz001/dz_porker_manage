@@ -17,8 +17,8 @@ namespace Model
         /// <param name="id">id</param>
         /// <param name="username">username</param>
         /// <param name="password">password</param>
-        /// <param name="auth_type">auth_type</param>
-        public auth_user(int? id, string username, string password, int? auth_type)
+        /// <param name="auth_type">0:普通，1：管理员</param>
+        public auth_user(int id, string username, string password, int auth_type)
         {
             this.id = id;
             this.username = username;
@@ -31,7 +31,7 @@ namespace Model
         /// <summary>
         /// id
         /// </summary>
-        public int? id { get; set; }
+        public int id { get; set; }
 
         /// <summary>
         /// username
@@ -44,9 +44,9 @@ namespace Model
         public string password { get; set; }
 
         /// <summary>
-        /// auth_type
+        /// 0:普通，1：管理员
         /// </summary>
-        public int? auth_type { get; set; }
+        public int auth_type { get; set; }
 
         #endregion
 

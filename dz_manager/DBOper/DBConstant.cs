@@ -235,6 +235,7 @@ namespace DataInput.DBOper
             catch(Exception ex)
             {
                 ret = 0;
+                MessageBox.Show(ex.Message);
                 throw ex;
             }
             finally

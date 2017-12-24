@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dz_manager</RootNamespace>
     <AssemblyName>dz_manager</AssemblyName>
-    <TargetFrameworkVersion>v4.5.3</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -72,17 +72,39 @@
     <Compile Include="DBOper\ReflectionHelper.cs" />
     <Compile Include="DBOper\TypeHelper.cs" />
     <Compile Include="DBOper\UCException.cs" />
+    <Compile Include="DlgAddBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgAddBalance.Designer.cs">
+      <DependentUpon>DlgAddBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\editable\add_score_record.cs" />
+    <Compile Include="Model\editable\auth_user.cs" />
+    <Compile Include="Model\editable\bill_record.cs" />
+    <Compile Include="Model\editable\choushui.cs" />
+    <Compile Include="Model\editable\desk.cs" />
+    <Compile Include="Model\editable\fanshui.cs" />
+    <Compile Include="Model\editable\member.cs" />
+    <Compile Include="Model\editable\proxy.cs" />
+    <Compile Include="Model\internal\add_balance_record.cs" />
+    <Compile Include="Model\internal\add_score_record.cs" />
+    <Compile Include="Model\internal\auth_user.cs" />
+    <Compile Include="Model\internal\bill_record.cs" />
+    <Compile Include="Model\internal\choushui.cs" />
+    <Compile Include="Model\internal\desk.cs" />
+    <Compile Include="Model\internal\fanshui.cs" />
+    <Compile Include="Model\internal\member.cs" />
+    <Compile Include="Model\internal\proxy.cs" />
+    <Compile Include="SuperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DlgAddDesk.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DlgAddDesk.Designer.cs">
       <DependentUpon>DlgAddDesk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\editable\auth_user.cs" />
-    <Compile Include="Model\internal\auth_user.cs" />
-    <Compile Include="SuperForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Tools.cs" />
     <Compile Include="WinAddMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,12 +153,6 @@
     <Compile Include="WinMain.Designer.cs">
       <DependentUpon>WinMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="MDIMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MDIMain.Designer.cs">
-      <DependentUpon>MDIMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinMemberQuery.cs">
@@ -169,12 +185,15 @@
     <Compile Include="WinSettleAddScore.Designer.cs">
       <DependentUpon>WinSettleAddScore.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinStatus.cs">
+    <Compile Include="WinSettleFinish.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinStatus.Designer.cs">
-      <DependentUpon>WinStatus.cs</DependentUpon>
+    <Compile Include="WinSettleFinish.Designer.cs">
+      <DependentUpon>WinSettleFinish.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DlgAddBalance.resx">
+      <DependentUpon>DlgAddBalance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DlgAddDesk.resx">
       <DependentUpon>DlgAddDesk.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,9 +221,6 @@
     <EmbeddedResource Include="WinMain.resx">
       <DependentUpon>WinMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDIMain.resx">
-      <DependentUpon>MDIMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -230,8 +246,8 @@
     <EmbeddedResource Include="WinSettleAddScore.resx">
       <DependentUpon>WinSettleAddScore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinStatus.resx">
-      <DependentUpon>WinStatus.cs</DependentUpon>
+    <EmbeddedResource Include="WinSettleFinish.resx">
+      <DependentUpon>WinSettleFinish.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

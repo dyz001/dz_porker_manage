@@ -46,9 +46,10 @@
             // 
             // btn_test
             // 
-            this.btn_test.Location = new System.Drawing.Point(138, 186);
+            this.btn_test.Font = new System.Drawing.Font("宋体", 15F);
+            this.btn_test.Location = new System.Drawing.Point(92, 188);
             this.btn_test.Name = "btn_test";
-            this.btn_test.Size = new System.Drawing.Size(75, 23);
+            this.btn_test.Size = new System.Drawing.Size(100, 40);
             this.btn_test.TabIndex = 0;
             this.btn_test.Text = "测试连接";
             this.btn_test.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(351, 186);
+            this.btn_save.Font = new System.Drawing.Font("宋体", 15F);
+            this.btn_save.Location = new System.Drawing.Point(305, 188);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(75, 23);
+            this.btn_save.Size = new System.Drawing.Size(100, 40);
             this.btn_save.TabIndex = 1;
             this.btn_save.Text = "保存";
             this.btn_save.UseVisualStyleBackColor = true;
@@ -66,9 +68,10 @@
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(536, 186);
+            this.btn_close.Font = new System.Drawing.Font("宋体", 15F);
+            this.btn_close.Location = new System.Drawing.Point(490, 188);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(75, 23);
+            this.btn_close.Size = new System.Drawing.Size(100, 40);
             this.btn_close.TabIndex = 2;
             this.btn_close.Text = "关闭";
             this.btn_close.UseVisualStyleBackColor = true;
@@ -76,83 +79,98 @@
             // 
             // txt_host
             // 
-            this.txt_host.Location = new System.Drawing.Point(138, 44);
+            this.txt_host.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_host.Font = new System.Drawing.Font("宋体", 15F);
+            this.txt_host.Location = new System.Drawing.Point(143, 43);
             this.txt_host.Name = "txt_host";
-            this.txt_host.Size = new System.Drawing.Size(236, 21);
+            this.txt_host.Size = new System.Drawing.Size(236, 30);
             this.txt_host.TabIndex = 3;
             // 
             // txt_db
             // 
-            this.txt_db.Location = new System.Drawing.Point(138, 92);
+            this.txt_db.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_db.Font = new System.Drawing.Font("宋体", 15F);
+            this.txt_db.Location = new System.Drawing.Point(143, 91);
             this.txt_db.Name = "txt_db";
-            this.txt_db.Size = new System.Drawing.Size(236, 21);
+            this.txt_db.Size = new System.Drawing.Size(236, 30);
             this.txt_db.TabIndex = 4;
             // 
             // txt_username
             // 
-            this.txt_username.Location = new System.Drawing.Point(138, 137);
+            this.txt_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_username.Font = new System.Drawing.Font("宋体", 15F);
+            this.txt_username.Location = new System.Drawing.Point(143, 136);
             this.txt_username.Name = "txt_username";
-            this.txt_username.Size = new System.Drawing.Size(100, 21);
+            this.txt_username.Size = new System.Drawing.Size(100, 30);
             this.txt_username.TabIndex = 5;
             // 
             // txt_pwd
             // 
-            this.txt_pwd.Location = new System.Drawing.Point(373, 136);
+            this.txt_pwd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_pwd.Font = new System.Drawing.Font("宋体", 15F);
+            this.txt_pwd.Location = new System.Drawing.Point(378, 135);
             this.txt_pwd.Name = "txt_pwd";
-            this.txt_pwd.Size = new System.Drawing.Size(100, 21);
+            this.txt_pwd.Size = new System.Drawing.Size(100, 30);
             this.txt_pwd.TabIndex = 6;
             this.txt_pwd.UseSystemPasswordChar = true;
             // 
             // lbl_host
             // 
             this.lbl_host.AutoSize = true;
-            this.lbl_host.Location = new System.Drawing.Point(25, 44);
+            this.lbl_host.Font = new System.Drawing.Font("宋体", 15F);
+            this.lbl_host.Location = new System.Drawing.Point(18, 44);
             this.lbl_host.Name = "lbl_host";
-            this.lbl_host.Size = new System.Drawing.Size(65, 12);
+            this.lbl_host.Size = new System.Drawing.Size(119, 20);
             this.lbl_host.TabIndex = 7;
-            this.lbl_host.Text = "数据库地址";
+            this.lbl_host.Text = "数据库地址:";
             // 
             // lbl_db_name
             // 
             this.lbl_db_name.AutoSize = true;
+            this.lbl_db_name.Font = new System.Drawing.Font("宋体", 15F);
             this.lbl_db_name.Location = new System.Drawing.Point(25, 95);
             this.lbl_db_name.Name = "lbl_db_name";
-            this.lbl_db_name.Size = new System.Drawing.Size(47, 12);
+            this.lbl_db_name.Size = new System.Drawing.Size(79, 20);
             this.lbl_db_name.TabIndex = 8;
             this.lbl_db_name.Text = "数据库:";
             // 
             // lbl_username
             // 
             this.lbl_username.AutoSize = true;
-            this.lbl_username.Location = new System.Drawing.Point(25, 146);
+            this.lbl_username.Font = new System.Drawing.Font("宋体", 15F);
+            this.lbl_username.Location = new System.Drawing.Point(26, 141);
             this.lbl_username.Name = "lbl_username";
-            this.lbl_username.Size = new System.Drawing.Size(47, 12);
+            this.lbl_username.Size = new System.Drawing.Size(79, 20);
             this.lbl_username.TabIndex = 9;
             this.lbl_username.Text = "用户名:";
             // 
             // lbl_pwd
             // 
             this.lbl_pwd.AutoSize = true;
-            this.lbl_pwd.Location = new System.Drawing.Point(312, 145);
+            this.lbl_pwd.Font = new System.Drawing.Font("宋体", 15F);
+            this.lbl_pwd.Location = new System.Drawing.Point(314, 139);
             this.lbl_pwd.Name = "lbl_pwd";
-            this.lbl_pwd.Size = new System.Drawing.Size(35, 12);
+            this.lbl_pwd.Size = new System.Drawing.Size(59, 20);
             this.lbl_pwd.TabIndex = 10;
             this.lbl_pwd.Text = "密码:";
             // 
             // lbl_port
             // 
             this.lbl_port.AutoSize = true;
+            this.lbl_port.Font = new System.Drawing.Font("宋体", 15F);
             this.lbl_port.Location = new System.Drawing.Point(384, 52);
             this.lbl_port.Name = "lbl_port";
-            this.lbl_port.Size = new System.Drawing.Size(41, 12);
+            this.lbl_port.Size = new System.Drawing.Size(69, 20);
             this.lbl_port.TabIndex = 11;
             this.lbl_port.Text = "端口：";
             // 
             // txt_port
             // 
-            this.txt_port.Location = new System.Drawing.Point(429, 46);
+            this.txt_port.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_port.Font = new System.Drawing.Font("宋体", 15F);
+            this.txt_port.Location = new System.Drawing.Point(440, 45);
             this.txt_port.Name = "txt_port";
-            this.txt_port.Size = new System.Drawing.Size(100, 21);
+            this.txt_port.Size = new System.Drawing.Size(100, 30);
             this.txt_port.TabIndex = 12;
             // 
             // lbl_con_result

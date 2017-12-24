@@ -28,32 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flp_desk_manager = new System.Windows.Forms.FlowLayoutPanel();
+            this.tlp_main = new System.Windows.Forms.TableLayoutPanel();
+            this.pnl_add_desk = new System.Windows.Forms.Panel();
+            this.btn_add_desk = new System.Windows.Forms.Button();
+            this.pnl_desk_info = new System.Windows.Forms.Panel();
+            this.lbl_desk_state = new System.Windows.Forms.Label();
+            this.lbl_desk_no = new System.Windows.Forms.Label();
+            this.tlp_main.SuspendLayout();
+            this.pnl_add_desk.SuspendLayout();
+            this.pnl_desk_info.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flp_desk_manager
+            // tlp_main
             // 
-            this.flp_desk_manager.Location = new System.Drawing.Point(42, 26);
-            this.flp_desk_manager.Name = "flp_desk_manager";
-            this.flp_desk_manager.Size = new System.Drawing.Size(935, 457);
-            this.flp_desk_manager.TabIndex = 0;
+            this.tlp_main.ColumnCount = 6;
+            this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlp_main.Controls.Add(this.pnl_add_desk, 0, 0);
+            this.tlp_main.Controls.Add(this.pnl_desk_info, 1, 0);
+            this.tlp_main.Location = new System.Drawing.Point(10, 28);
+            this.tlp_main.Name = "tlp_main";
+            this.tlp_main.RowCount = 4;
+            this.tlp_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tlp_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tlp_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tlp_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tlp_main.Size = new System.Drawing.Size(760, 520);
+            this.tlp_main.TabIndex = 0;
+            // 
+            // pnl_add_desk
+            // 
+            this.pnl_add_desk.Controls.Add(this.btn_add_desk);
+            this.pnl_add_desk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_add_desk.Location = new System.Drawing.Point(10, 10);
+            this.pnl_add_desk.Margin = new System.Windows.Forms.Padding(10);
+            this.pnl_add_desk.Name = "pnl_add_desk";
+            this.pnl_add_desk.Size = new System.Drawing.Size(100, 110);
+            this.pnl_add_desk.TabIndex = 0;
+            // 
+            // btn_add_desk
+            // 
+            this.btn_add_desk.AutoSize = true;
+            this.btn_add_desk.Location = new System.Drawing.Point(1, 0);
+            this.btn_add_desk.Margin = new System.Windows.Forms.Padding(10);
+            this.btn_add_desk.Name = "btn_add_desk";
+            this.btn_add_desk.Size = new System.Drawing.Size(90, 90);
+            this.btn_add_desk.TabIndex = 0;
+            this.btn_add_desk.Text = "+";
+            this.btn_add_desk.UseVisualStyleBackColor = true;
+            this.btn_add_desk.Click += new System.EventHandler(this.btn_add_desk_Click);
+            // 
+            // pnl_desk_info
+            // 
+            this.pnl_desk_info.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pnl_desk_info.Controls.Add(this.lbl_desk_state);
+            this.pnl_desk_info.Controls.Add(this.lbl_desk_no);
+            this.pnl_desk_info.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_desk_info.Location = new System.Drawing.Point(130, 10);
+            this.pnl_desk_info.Margin = new System.Windows.Forms.Padding(10);
+            this.pnl_desk_info.Name = "pnl_desk_info";
+            this.pnl_desk_info.Size = new System.Drawing.Size(100, 110);
+            this.pnl_desk_info.TabIndex = 1;
+            this.pnl_desk_info.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_desk_info_MouseUp);
+            // 
+            // lbl_desk_state
+            // 
+            this.lbl_desk_state.AutoSize = true;
+            this.lbl_desk_state.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_desk_state.Location = new System.Drawing.Point(14, 63);
+            this.lbl_desk_state.Name = "lbl_desk_state";
+            this.lbl_desk_state.Size = new System.Drawing.Size(69, 20);
+            this.lbl_desk_state.TabIndex = 1;
+            this.lbl_desk_state.Text = "进行中";
+            // 
+            // lbl_desk_no
+            // 
+            this.lbl_desk_no.AutoSize = true;
+            this.lbl_desk_no.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_desk_no.Location = new System.Drawing.Point(7, 13);
+            this.lbl_desk_no.Name = "lbl_desk_no";
+            this.lbl_desk_no.Size = new System.Drawing.Size(80, 27);
+            this.lbl_desk_no.TabIndex = 0;
+            this.lbl_desk_no.Text = "1号桌";
             // 
             // WinDeskManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 514);
-            this.Controls.Add(this.flp_desk_manager);
+            this.ClientSize = new System.Drawing.Size(780, 630);
+            this.Controls.Add(this.tlp_main);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinDeskManager";
             this.Text = "牌桌管理";
+            this.tlp_main.ResumeLayout(false);
+            this.pnl_add_desk.ResumeLayout(false);
+            this.pnl_add_desk.PerformLayout();
+            this.pnl_desk_info.ResumeLayout(false);
+            this.pnl_desk_info.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flp_desk_manager;
+        private System.Windows.Forms.TableLayoutPanel tlp_main;
+        private System.Windows.Forms.Panel pnl_add_desk;
+        private System.Windows.Forms.Button btn_add_desk;
+        private System.Windows.Forms.Panel pnl_desk_info;
+        private System.Windows.Forms.Label lbl_desk_no;
+        private System.Windows.Forms.Label lbl_desk_state;
+
     }
 }

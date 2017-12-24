@@ -19,6 +19,8 @@ namespace dz_manager
         protected List<RadioButton> DataMgrSubBtns;
         protected List<SuperForm> m_win_lst;
 
+        protected static WinMain m_instance;
+
         public enum SubBtnType
         {
             EAddScore = 0,
@@ -27,7 +29,7 @@ namespace dz_manager
             EDataQuery = 3,
         }
 
-        const int sub_btn_width = 80;
+        const int sub_btn_width = 120;
         const int sub_btn_height = 40;
 
         const int sub_btn_left = 10;
@@ -37,6 +39,35 @@ namespace dz_manager
         public WinMain()
         {
             InitializeComponent();
+            if(m_instance == null)
+            {
+                m_instance = this;
+            }
+        }
+
+        public static WinMain GetInstance()
+        {
+            return m_instance;
+        }
+
+        public void ShowFinishDeskWin(string desk_no)
+        {
+            HideSubWindows();
+            WinSettleFinish settle_finish = GetWinByType(typeof(WinSettleFinish)) as WinSettleFinish;
+            settle_finish.SetDeskNo(desk_no);
+            settle_finish.ShowWin();
+        }
+
+        public void HideSubWindows()
+        {
+            foreach(var item in this.pnl_win.Controls)
+            {
+                SuperForm form = item as SuperForm;
+                if(form != null)
+                {
+                    form.HideWin();
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -110,14 +141,14 @@ namespace dz_manager
                 if (btn.Checked == false) return;
                 ShowSubWin(typeof(WinDailyProfit));
             }));
-            DataMgrSubBtns.Add(GetNewRdoBtn("单桌盈利查询", sub_btn_width, sub_btn_height, (object obj, EventArgs args) =>
+            DataMgrSubBtns.Add(GetNewRdoBtn("单桌盈利查询", sub_btn_width, sub_btn_height * 2, (object obj, EventArgs args) =>
             {
                 RadioButton btn = obj as RadioButton;
                 if (btn == null) return;
                 if (btn.Checked == false) return;
                 ShowSubWin(typeof(WinDeskProfit));
             }));
-            DataMgrSubBtns.Add(GetNewRdoBtn("代理盈利查询", sub_btn_width, sub_btn_height, (object obj, EventArgs args) =>
+            DataMgrSubBtns.Add(GetNewRdoBtn("代理盈利查询", sub_btn_width, sub_btn_height * 2, (object obj, EventArgs args) =>
             {
                 RadioButton btn = obj as RadioButton;
                 if (btn == null) return;
@@ -136,14 +167,9 @@ namespace dz_manager
 
         public void ShowSubWin(Type sub_win_type)
         {
-            pnl_win.Controls.Clear();
-            if(pnl_win.Controls.Count > 0)
-            {
-                pnl_win.Controls[0].Visible = false;
-            }
+            HideSubWindows();
             SuperForm form = GetWinByType(sub_win_type);
-            pnl_win.Controls.Add(form);
-            form.Show();
+            form.ShowWin();
         }
 
         public SuperForm GetWinByType(Type type)
@@ -160,6 +186,7 @@ namespace dz_manager
             {
                 object obj = Activator.CreateInstance(type);
                 m_win_lst.Add((SuperForm)obj);
+                pnl_win.Controls.Add((SuperForm)obj);
                 target = (SuperForm)obj;
             }
             return target;
@@ -171,7 +198,7 @@ namespace dz_manager
             {
                 gpb_add_score.Controls.Add(btns[i]);
                 btns[i].Left = sub_btn_left;
-                btns[i].Top = sub_btn_top + i * (sub_btn_vertical_interval + sub_btn_height);
+                btns[i].Top = sub_btn_top + i * (sub_btn_vertical_interval + (i > 0 ? btns[i - 1].Height : 0));
                 btns[i].Visible = false;
             }
         }
@@ -242,7 +269,9 @@ namespace dz_manager
             btn.Text = text;
             btn.Width = width;
             btn.Height = height;
+            btn.Font = new Font("宋体", 15);
             btn.Appearance = Appearance.Button;
+            btn.TextAlign = ContentAlignment.MiddleCenter;
             btn.CheckedChanged += check_change;
             return btn;
         }

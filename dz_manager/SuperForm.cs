@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace dz_manager
 {
     public class SuperForm : Form
-    {
+    {   
         public SuperForm() 
         {
             this.TopLevel = false;
@@ -17,6 +17,20 @@ namespace dz_manager
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+        }
+
+        protected virtual void PreShowWin() { }
+        public void ShowWin()
+        {
+            PreShowWin();
+            Show();
+        }
+        protected virtual void PreHide() { }
+
+        public void HideWin()
+        {
+            PreHide();
+            Hide();
         }
     }
 }
