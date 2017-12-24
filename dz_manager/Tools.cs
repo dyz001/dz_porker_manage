@@ -24,5 +24,15 @@ namespace dz_manager
             }
             return target;
         }
+
+        public static string GetSqlDateCond(string date_field, DateTime from, DateTime to)
+        {
+            return date_field + ">='" + from.ToShortDateString() + "' and " + date_field + "<'" + to.ToShortDateString() + "'";
+        }
+
+        public static double FormatDouble(double d_value)
+        {
+            return (double)((Int64)(d_value * 1000)) / 1000;
+        }
     }
 }

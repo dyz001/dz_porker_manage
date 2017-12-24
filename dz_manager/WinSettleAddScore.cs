@@ -83,6 +83,7 @@ namespace dz_manager
             bool is_ok = true;
             foreach(var item in m_bill_list)
             {
+                item.optor = DataManager.GetAuthUser().username;
                 if(item.fluctuate != 0 || item.insure != 0 || item.other != 0)
                 {
                     if(!DBUtil.GetInstance().CheckAndAdd<bill_record>("member_name='" + item.member_name + "' and desk_name='" + 

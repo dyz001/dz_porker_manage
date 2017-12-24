@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace DataInput.DBOper
         protected static DBUtil m_Instance;
         protected MySqlCommand m_myCommand;
         protected MySqlDataReader m_myReader;
+        MySqlDataAdapter m_myAdapter;
         protected static dz_manager.DBConfig.DBAuthData m_auth_data;
         protected bool m_bStationDirty = true;
 
@@ -45,6 +47,7 @@ namespace DataInput.DBOper
                 string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, auth_data.DBPass, auth_data.DBName, auth_data.DBPort);
                 m_mysqlConn = new MySqlConnection(connStr);
             }
+            m_myAdapter = new MySqlDataAdapter();
         }
 
         public static bool TryOpenDB(dz_manager.DBConfig.DBAuthData auth_data)
@@ -104,18 +107,39 @@ namespace DataInput.DBOper
             return GetLstBySql<T>(sql);
         }
 
+        public bool CheckExistByWhere<T>(string where = "")
+        {
+            bool ret = false;
+            BeginTrans();
+            m_myCommand.CommandText = "select id from " + typeof(T).Name + (string.IsNullOrEmpty(where) ? "" : " where " + where);
+            m_myReader = m_myCommand.ExecuteReader();
+            if(m_myReader.HasRows)
+            {
+                ret = true;
+            }
+            EndTrans();
+            return ret;
+        }
+
         public T GetEntityByWhere<T>(string where) where T : class
         {
             T ret = default(T);
             BeginTrans();
             m_myCommand.CommandText = "select * from " + typeof(T).Name + (string.IsNullOrEmpty(where) ?
                 "" : " where " + where);
+            DataSet MyDataSet = new DataSet();
+            m_myAdapter.SelectCommand = m_myCommand;
+            m_myAdapter.Fill(MyDataSet, "DataSet1"); 
             m_myCommand.CommandType = CommandType.Text;
-            m_myReader = m_myCommand.ExecuteReader();
-            if (m_myReader.Read())
+            if(MyDataSet.Tables.Count > 0 && MyDataSet.Tables[0].Rows.Count > 0)
             {
-                ret = DataHelper.ConvertToEntity<T>(m_myReader);
+                ret = DataHelper.ConvertToEntity<T>(MyDataSet.Tables[0].Rows[0]);
             }
+            //m_myReader = m_myCommand.ExecuteReader();
+            //if (m_myReader.Read())
+            //{
+            //    ret = DataHelper.ConvertToEntity<T>(m_myReader);
+            //}
             EndTrans();
             return ret;
         }
@@ -126,8 +150,10 @@ namespace DataInput.DBOper
             IList<T> ret;
             m_myCommand.CommandText = sql;
             m_myCommand.CommandType = CommandType.Text;
-            m_myReader = m_myCommand.ExecuteReader();
-            ret = DataHelper.ConvertToLst<T>(m_myReader);
+            DataSet MyDataSet = new DataSet();
+            m_myAdapter.SelectCommand = m_myCommand;
+            m_myAdapter.Fill(MyDataSet, "DataSet1"); 
+            ret = DataHelper.ConvertToLst<T>(MyDataSet);
             EndTrans();
             if(ret.Count == 0)
             {

@@ -34,6 +34,14 @@
                     return true;
                 }
             }
+            if (targetType == typeof(DateTime?))
+            {
+                return val as DateTime?;
+            }
+            if (targetType == typeof(DateTime))
+            {
+                return (DateTime)val;
+            }
             if (targetType.IsEnum)
             {
                 int result = 0;

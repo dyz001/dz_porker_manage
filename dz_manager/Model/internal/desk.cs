@@ -22,7 +22,7 @@ namespace Model
         /// <param name="status">0:创建，1:进行中, 2: 已结束</param>
         /// <param name="optor">操作人</param>
         /// <param name="oper_time">操作时间</param>
-        public desk(int id, string name, double income, double league, DateTime? create_date, int status, string optor, DateTime? oper_time)
+        public desk(int id, string name, double income, double league, DateTime? create_date, DateTime? end_date, int status, string optor, DateTime? oper_time)
         {
             this.id = id;
             this.name = name;
@@ -32,6 +32,7 @@ namespace Model
             this.status = status;
             this.optor = optor;
             this.oper_time = oper_time;
+
         }
 
         #region 实体属性
@@ -60,6 +61,11 @@ namespace Model
         /// create_date
         /// </summary>
         public DateTime? create_date { get; set; }
+
+        /// <summary>
+        /// end_date
+        /// </summary>
+        public DateTime? end_date { get; set; }
 
         /// <summary>
         /// 0:创建，1:进行中, 2: 已结束

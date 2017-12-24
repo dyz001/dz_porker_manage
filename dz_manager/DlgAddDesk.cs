@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataInput.DBOper;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,15 +32,30 @@ namespace dz_manager
             Show();
         }
 
+        protected bool CheckExist(string desk_no)
+        {
+            if(DBUtil.GetInstance().CheckExistByWhere<desk>("name='" + desk_no + "'"))
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void btn_ok_Click(object sender, EventArgs e)
         {
             if(string.IsNullOrEmpty(txt_desk_name.Text))
             {
-                MessageBox.Show("没有填写桌子名称");
+                txt_desk_name.Focus();
                 return;
             }
             else
             {
+                if (CheckExist(txt_desk_name.Text))
+                {
+                    txt_desk_name.Focus();
+                    txt_desk_name.SelectAll();
+                    return;
+                }
                 ((WinDeskManager)this.WinParent).AddCell(txt_desk_name.Text, "未开始", dtp_desk.Value);
                 this.Hide();
             }

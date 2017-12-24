@@ -97,7 +97,8 @@ namespace dz_manager
 
         protected void InitDeskData()
         {
-            m_curDeskData = DBUtil.GetInstance().GetLstItems<desk>("status != 2");
+            m_curDeskData = DBUtil.GetInstance().GetLstItems<desk>("create_date >= '" + dtp_date.Value.ToShortDateString()
+                + "' and create_date < '" + dtp_date.Value.AddDays(1).ToShortDateString() + "'");
             //init desk
             foreach (desk d in m_curDeskData)
             {
@@ -128,7 +129,8 @@ namespace dz_manager
                 this.tlp_main.Controls.Remove(cell.GetMainPnl());
             }
             m_dicCell.Clear();
-            m_curDeskData = DBUtil.GetInstance().GetLstItems<desk>("status != 2");
+            m_curDeskData = DBUtil.GetInstance().GetLstItems<desk>("create_date >= '" + dtp_date.Value.ToShortDateString()
+                + "' and create_date < '" + dtp_date.Value.AddDays(1).ToShortDateString() + "'");
 
             //init desk
             foreach(desk d in m_curDeskData)
@@ -152,7 +154,7 @@ namespace dz_manager
         {
             if (m_dicCell.ContainsKey(desk_no))
             {
-                MessageBox.Show(Constant.WIN_DESK_ALREADY_EXIST);
+                MessageBox.Show(Constant.WIN_DESK_ALREADY_EXIST + desk_no);
                 return;
             }
             Cell desk_cell = (Cell)cell_template.Clone();
@@ -173,6 +175,11 @@ namespace dz_manager
             target.name = desk_no;
             target.optor = DataManager.GetAuthUser().username;
             return DBUtil.GetInstance().SaveObj<desk>(target);
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            RefreshDesk();
         }
     }
 }

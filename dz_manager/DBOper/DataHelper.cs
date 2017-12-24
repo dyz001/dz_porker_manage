@@ -150,6 +150,40 @@ using System.Reflection;
             return target;
         }
 
+        public static TEntity ConvertToEntity<TEntity>(DataRow row) where TEntity : class
+        {
+            Type objType = typeof(TEntity);
+            object target = Activator.CreateInstance(objType);
+            for (int i = 0; i < row.Table.Columns.Count; ++i)
+            {
+                DataColumn dc = row.Table.Columns[i];
+                PropertyInfo property = objType.GetProperty(dc.ColumnName,
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+                if (property == null)
+                {
+                    continue;
+                }
+                Type propertyType = property.PropertyType;
+                object obj3 = null;
+                bool flag = true;
+                try
+                {   
+                    obj3 = TypeHelper.ChangeType(propertyType, row[i]);
+                }
+                catch (Exception ex)
+                {
+                    flag = false;
+                    string msg = ex.Message;
+                }
+                if (flag)
+                {
+                    object[] args = new object[] { obj3 };
+                    objType.InvokeMember(dc.ColumnName, BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase, null, target, args);
+                }
+            }
+            return target as TEntity;
+        }
+
         public static TEntity ConvertToEntity<TEntity>(MySqlDataReader reader) where TEntity:class
         {
             Type objType = typeof(TEntity);
@@ -167,6 +201,11 @@ using System.Reflection;
                 bool flag = true;
                 try
                 {
+                    string val;
+                    if (propertyType == typeof(DateTime))
+                    {
+                        val = reader.GetDateTime(i).ToString("yyyy-MM-dd");
+                    }
                     obj3 = TypeHelper.ChangeType(propertyType, reader.GetValue(i));
                 }
                 catch (Exception ex)
@@ -191,6 +230,19 @@ using System.Reflection;
             {  
                 list.Add(ConvertToEntity<TEntity>(reader));
             } 
+            return list;
+        }
+
+        public static IList<TEntity> ConvertToLst<TEntity>(DataSet dataSet) where TEntity : class
+        {
+            IList<TEntity> list = new List<TEntity>();
+            Type objType = typeof(TEntity);
+            int row_cnt = 0;
+            while (row_cnt < dataSet.Tables[0].Rows.Count)
+            {
+                DataRow row = dataSet.Tables[0].Rows[row_cnt];
+                list.Add(ConvertToEntity<TEntity>(row));
+            }
             return list;
         }
 

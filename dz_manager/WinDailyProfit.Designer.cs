@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.btn_search = new System.Windows.Forms.Button();
             this.lbl_datetime = new System.Windows.Forms.Label();
             this.data_grid_daily = new System.Windows.Forms.DataGridView();
@@ -40,17 +40,17 @@
             this.other = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.union = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detail = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.data_grid_daily)).BeginInit();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // dtp_date
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("宋体", 15F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(213, 22);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 30);
-            this.dateTimePicker1.TabIndex = 0;
+            this.dtp_date.Font = new System.Drawing.Font("宋体", 15F);
+            this.dtp_date.Location = new System.Drawing.Point(213, 22);
+            this.dtp_date.Name = "dtp_date";
+            this.dtp_date.Size = new System.Drawing.Size(200, 30);
+            this.dtp_date.TabIndex = 0;
             // 
             // btn_search
             // 
@@ -61,6 +61,7 @@
             this.btn_search.TabIndex = 1;
             this.btn_search.Text = "查询";
             this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // lbl_datetime
             // 
@@ -74,6 +75,7 @@
             // 
             // data_grid_daily
             // 
+            this.data_grid_daily.AllowUserToDeleteRows = false;
             this.data_grid_daily.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -95,9 +97,12 @@
             this.detail});
             this.data_grid_daily.Location = new System.Drawing.Point(24, 75);
             this.data_grid_daily.Name = "data_grid_daily";
+            this.data_grid_daily.ReadOnly = true;
             this.data_grid_daily.RowTemplate.Height = 23;
             this.data_grid_daily.Size = new System.Drawing.Size(734, 506);
             this.data_grid_daily.TabIndex = 3;
+            this.data_grid_daily.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_grid_daily_CellContentClick);
+            this.data_grid_daily.MouseClick += new System.Windows.Forms.MouseEventHandler(this.data_grid_daily_MouseClick);
             // 
             // Id
             // 
@@ -146,6 +151,8 @@
             this.detail.HeaderText = "详情";
             this.detail.Name = "detail";
             this.detail.ReadOnly = true;
+            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.detail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // WinDailyProfit
             // 
@@ -155,7 +162,7 @@
             this.Controls.Add(this.data_grid_daily);
             this.Controls.Add(this.lbl_datetime);
             this.Controls.Add(this.btn_search);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtp_date);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinDailyProfit";
@@ -168,7 +175,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp_date;
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.Label lbl_datetime;
         private System.Windows.Forms.DataGridView data_grid_daily;
@@ -179,6 +186,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn other;
         private System.Windows.Forms.DataGridViewTextBoxColumn sum;
         private System.Windows.Forms.DataGridViewTextBoxColumn union;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detail;
+        private System.Windows.Forms.DataGridViewLinkColumn detail;
     }
 }

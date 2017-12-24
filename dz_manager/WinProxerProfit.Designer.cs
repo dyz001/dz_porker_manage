@@ -41,7 +41,7 @@
             this.desk_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fanshui = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detail = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_profit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +91,7 @@
             this.btn_search.TabIndex = 4;
             this.btn_search.Text = "查询";
             this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // lbl_profit_all
             // 
@@ -115,6 +116,7 @@
             // 
             // dgv_profit
             // 
+            this.dgv_profit.AllowUserToDeleteRows = false;
             this.dgv_profit.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -133,6 +135,7 @@
             this.detail});
             this.dgv_profit.Location = new System.Drawing.Point(57, 138);
             this.dgv_profit.Name = "dgv_profit";
+            this.dgv_profit.ReadOnly = true;
             this.dgv_profit.RowTemplate.Height = 23;
             this.dgv_profit.Size = new System.Drawing.Size(576, 433);
             this.dgv_profit.TabIndex = 7;
@@ -166,6 +169,8 @@
             this.detail.HeaderText = "详情";
             this.detail.Name = "detail";
             this.detail.ReadOnly = true;
+            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.detail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // WinProxerProfit
             // 
@@ -204,6 +209,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn desk_no;
         private System.Windows.Forms.DataGridViewTextBoxColumn profit;
         private System.Windows.Forms.DataGridViewTextBoxColumn fanshui;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detail;
+        private System.Windows.Forms.DataGridViewLinkColumn detail;
     }
 }

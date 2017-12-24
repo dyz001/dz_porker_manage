@@ -30,12 +30,6 @@ namespace dz_manager
             this.desk_no = desk_no;
             lbl_desk_no_val.Text = desk_no;
         }
-        
-        protected double format_double(double d_value)
-        {
-            return (double)((Int64)(d_value * 1000)) / 1000;
-            //return d_value;
-        }
 
         protected override void PreShowWin()
         {
@@ -50,13 +44,13 @@ namespace dz_manager
             foreach(var item in m_bill_list)
             {
                 item.pure_fluctuate = item.pure_fluctuate <= double.Epsilon ? 0.975 * item.fluctuate : item.pure_fluctuate;
-                item.pure_fluctuate = format_double(item.pure_fluctuate);
+                item.pure_fluctuate = Tools.FormatDouble(item.pure_fluctuate);
                 item.pure_insure = item.pure_insure <= double.Epsilon ? 0.975 * item.insure : item.pure_insure;
-                item.pure_insure = format_double(item.pure_insure);
+                item.pure_insure = Tools.FormatDouble(item.pure_insure);
                 item.choushui = item.choushui <= double.Epsilon ? (item.fluctuate > 1 ? item.fluctuate * 0.05 : 0) : item.choushui;
-                item.choushui = format_double(item.choushui);
+                item.choushui = Tools.FormatDouble(item.choushui);
                 item.jingchoushui = item.jingchoushui <= double.Epsilon ? Math.Abs((double)item.fluctuate * 0.025) : item.jingchoushui;
-                item.jingchoushui = format_double(item.jingchoushui);
+                item.jingchoushui = Tools.FormatDouble(item.jingchoushui);
                 item.transfer = item.take_in + item.fluctuate - item.other;
                 member t_member = DBUtil.GetInstance().GetEntityByWhere<member>("game_id='" + item.member_name + "'");
                 item.member_init_balance = item.member_init_balance < double.Epsilon ? t_member.first_balance : item.member_init_balance;
@@ -65,8 +59,8 @@ namespace dz_manager
             }
             m_desk.income = m_desk.income < double.Epsilon ? m_desk_income : m_desk.income;
             m_desk.league = m_desk.league < double.Epsilon ? m_desk_union : m_desk.league;
-            m_desk.income = format_double(m_desk.income);
-            m_desk.league = format_double(m_desk.league);
+            m_desk.income = Tools.FormatDouble(m_desk.income);
+            m_desk.league = Tools.FormatDouble(m_desk.league);
             dgv_settle.AutoGenerateColumns = false;
             dgv_settle.Columns["Id"].DataPropertyName = "id";
             dgv_settle.Columns["Member"].DataPropertyName = "member_name";
@@ -89,6 +83,7 @@ namespace dz_manager
             //todo:更新桌子状态为结束，并计算营收
             bool is_ok = true;
             m_desk.status = (int)desk.EStatus.EEnd;
+            m_desk.optor = DataManager.GetAuthUser().username;
             if(!DBUtil.GetInstance().Update<desk>(m_desk))
             {
                 is_ok = false;
