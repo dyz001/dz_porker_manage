@@ -35,6 +35,7 @@ using System.Reflection;
             return ( TEntity )ConvertRowToObject( objType , row );
         }
 
+
         public static string GenUpdateSql<T>(T ins)
         {
             StringBuilder sb = new StringBuilder();

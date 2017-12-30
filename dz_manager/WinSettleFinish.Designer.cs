@@ -234,6 +234,7 @@
             this.Controls.Add(this.lbl_desk_no);
             this.Name = "WinSettleFinish";
             this.Text = "WinSettleFinish";
+            this.Load += new System.EventHandler(this.WinSettleFinish_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_settle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

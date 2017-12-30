@@ -20,5 +20,7 @@ namespace dz_manager
         public const string WIN_DESK_ALREADY_EXIST = "桌号已经存在";
         public const string WIN_SCORE_DESK_NOT_FOUND = "桌号不存在";
         public const string WIN_SCORE_MEMBER_NOT_FOUND = "会员不存在";
+        public const string ENCRYPT_IV = "RE9VWUFOWkhBTzEyMzQ1Ng==";
+        public const string ENCRYPT_KEY = "ZG91eWFuemg=";
     }
 }

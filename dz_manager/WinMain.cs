@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataInput.DBOper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,11 +51,11 @@ namespace dz_manager
             return m_instance;
         }
 
-        public void ShowFinishDeskWin(string desk_no)
+        public void ShowFinishDeskWin(string desk_no, bool isSettle = false)
         {
             HideSubWindows();
             WinSettleFinish settle_finish = GetWinByType(typeof(WinSettleFinish)) as WinSettleFinish;
-            settle_finish.SetDeskNo(desk_no);
+            settle_finish.SetInfo(desk_no, isSettle);
             settle_finish.ShowWin();
         }
 
@@ -212,6 +213,7 @@ namespace dz_manager
                     btn.Visible = (type == btn_type);
                 }
             }
+            m_dic_btns[btn_type][0].Checked = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -226,6 +228,7 @@ namespace dz_manager
 
         protected override void OnClosed(EventArgs e)
         {
+            DBUtil.GetInstance().CloseConnection();
             Application.Exit();
         }
 

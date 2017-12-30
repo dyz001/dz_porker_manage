@@ -45,6 +45,7 @@ namespace dz_manager
             base.PreShowWin();
             txt_proxy_no.Text = "";
             dtp_date.Value = DateTime.Now;
+            lbl_profit_value.Text = "";
             dgv_profit.AutoGenerateColumns = false;
             dgv_profit.Columns["Id"].DataPropertyName = "Id";
             dgv_profit.Columns["desk_no"].DataPropertyName = "DeskName";

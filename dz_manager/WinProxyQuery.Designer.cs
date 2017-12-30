@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_proxy_gameid = new System.Windows.Forms.TextBox();
             this.btn_query = new System.Windows.Forms.Button();
             this.dgv_proxy = new System.Windows.Forms.DataGridView();
@@ -37,6 +37,7 @@
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.choushui = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btn_save = new System.Windows.Forms.Button();
+            this.btn_del = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_proxy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,14 +63,14 @@
             // 
             // dgv_proxy
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_proxy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_proxy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_proxy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_proxy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -109,7 +110,7 @@
             // btn_save
             // 
             this.btn_save.Font = new System.Drawing.Font("宋体", 15F);
-            this.btn_save.Location = new System.Drawing.Point(303, 529);
+            this.btn_save.Location = new System.Drawing.Point(199, 514);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(100, 40);
             this.btn_save.TabIndex = 3;
@@ -117,11 +118,23 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
+            // btn_del
+            // 
+            this.btn_del.Font = new System.Drawing.Font("宋体", 15F);
+            this.btn_del.Location = new System.Drawing.Point(396, 514);
+            this.btn_del.Name = "btn_del";
+            this.btn_del.Size = new System.Drawing.Size(100, 40);
+            this.btn_del.TabIndex = 4;
+            this.btn_del.Text = "删除";
+            this.btn_del.UseVisualStyleBackColor = true;
+            this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
+            // 
             // WinProxyQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 630);
+            this.Controls.Add(this.btn_del);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.dgv_proxy);
             this.Controls.Add(this.btn_query);
@@ -146,5 +159,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewComboBoxColumn choushui;
         private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_del;
     }
 }

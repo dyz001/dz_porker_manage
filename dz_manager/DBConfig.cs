@@ -67,7 +67,7 @@ namespace dz_manager
             if (db_auth_data == null) return;
             txt_db.Text = db_auth_data.DBName;
             txt_host.Text = db_auth_data.DBHost;
-            txt_pwd.Text = db_auth_data.DBPass;
+            txt_pwd.Text = string.IsNullOrEmpty(db_auth_data.DBPass) ? "" : Tools.Decrypt(db_auth_data.DBPass);
             txt_username.Text = db_auth_data.DBUser;
             txt_port.Text = db_auth_data.DBPort;
         }
@@ -97,7 +97,7 @@ namespace dz_manager
             db_auth_data.DBPort = txt_port.Text;
             db_auth_data.DBHost = txt_host.Text;
             db_auth_data.DBName = txt_db.Text;
-            db_auth_data.DBPass = txt_pwd.Text;
+            db_auth_data.DBPass = Tools.Encrypt(txt_pwd.Text);
             db_auth_data.DBUser = txt_username.Text;
             if(DBUtil.TryOpenDB(db_auth_data))
             {
@@ -115,7 +115,7 @@ namespace dz_manager
             db_auth_data.DBPort = txt_port.Text;
             db_auth_data.DBHost = txt_host.Text;
             db_auth_data.DBName = txt_db.Text;
-            db_auth_data.DBPass = txt_pwd.Text;
+            db_auth_data.DBPass = Tools.Encrypt(txt_pwd.Text);
             db_auth_data.DBUser = txt_username.Text;
             File.WriteAllText(db_file, SerializeObject(db_auth_data));
         }

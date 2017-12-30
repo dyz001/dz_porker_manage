@@ -20,47 +20,28 @@ namespace dz_manager
         protected double m_desk_income;
         protected double m_desk_union;
         protected string desk_no;
+        protected bool m_bIsSettle;
         public WinSettleFinish()
         {
             InitializeComponent();
         }
 
-        public void SetDeskNo(string desk_no)
+        public void SetInfo(string desk_no, bool isSettle)
         {
             this.desk_no = desk_no;
             lbl_desk_no_val.Text = desk_no;
+            m_bIsSettle = isSettle;
         }
 
         protected override void PreShowWin()
         {
             base.PreShowWin();
+            btn_return.Visible = false;
             if(string.IsNullOrEmpty(desk_no))
             {
                 return;
             }
-            //todo:初始化gridview
-            m_bill_list = DBUtil.GetInstance().GetLstItems<bill_record>("desk_name='" + lbl_desk_no_val.Text + "'");
-            m_desk = DBUtil.GetInstance().GetEntityByWhere<desk>("name='" + lbl_desk_no_val.Text + "'");            
-            foreach(var item in m_bill_list)
-            {
-                item.pure_fluctuate = item.pure_fluctuate <= double.Epsilon ? 0.975 * item.fluctuate : item.pure_fluctuate;
-                item.pure_fluctuate = Tools.FormatDouble(item.pure_fluctuate);
-                item.pure_insure = item.pure_insure <= double.Epsilon ? 0.975 * item.insure : item.pure_insure;
-                item.pure_insure = Tools.FormatDouble(item.pure_insure);
-                item.choushui = item.choushui <= double.Epsilon ? (item.fluctuate > 1 ? item.fluctuate * 0.05 : 0) : item.choushui;
-                item.choushui = Tools.FormatDouble(item.choushui);
-                item.jingchoushui = item.jingchoushui <= double.Epsilon ? Math.Abs((double)item.fluctuate * 0.025) : item.jingchoushui;
-                item.jingchoushui = Tools.FormatDouble(item.jingchoushui);
-                item.transfer = item.take_in + item.fluctuate - item.other;
-                member t_member = DBUtil.GetInstance().GetEntityByWhere<member>("game_id='" + item.member_name + "'");
-                item.member_init_balance = item.member_init_balance < double.Epsilon ? t_member.first_balance : item.member_init_balance;
-                m_desk_income += item.jingchoushui + item.pure_insure - item.other;
-                m_desk_union += item.pure_fluctuate + item.pure_insure;
-            }
-            m_desk.income = m_desk.income < double.Epsilon ? m_desk_income : m_desk.income;
-            m_desk.league = m_desk.league < double.Epsilon ? m_desk_union : m_desk.league;
-            m_desk.income = Tools.FormatDouble(m_desk.income);
-            m_desk.league = Tools.FormatDouble(m_desk.league);
+
             dgv_settle.AutoGenerateColumns = false;
             dgv_settle.Columns["Id"].DataPropertyName = "id";
             dgv_settle.Columns["Member"].DataPropertyName = "member_name";
@@ -74,6 +55,34 @@ namespace dz_manager
             dgv_settle.Columns["Balance"].DataPropertyName = "member_init_balance";
             dgv_settle.Columns["Transfer"].DataPropertyName = "transfer";
             dgv_settle.Columns["TakeIn"].DataPropertyName = "take_in";
+
+            //todo:初始化gridview
+            m_bill_list = DBUtil.GetInstance().GetLstItems<bill_record>("desk_name='" + lbl_desk_no_val.Text + "'");
+            m_desk = DBUtil.GetInstance().GetEntityByWhere<desk>("name='" + lbl_desk_no_val.Text + "'");
+            btn_finish.Visible = m_bIsSettle;
+            if(m_bIsSettle)
+            {
+                foreach(var item in m_bill_list)
+                {
+                    item.pure_fluctuate = item.pure_fluctuate <= double.Epsilon ? 0.975 * item.fluctuate : item.pure_fluctuate;
+                    item.pure_fluctuate = Tools.FormatDouble(item.pure_fluctuate);
+                    item.pure_insure = item.pure_insure <= double.Epsilon ? 0.975 * item.insure : item.pure_insure;
+                    item.pure_insure = Tools.FormatDouble(item.pure_insure);
+                    item.choushui = item.choushui <= double.Epsilon ? (item.fluctuate > 1 ? item.fluctuate * 0.05 : 0) : item.choushui;
+                    item.choushui = Tools.FormatDouble(item.choushui);
+                    item.jingchoushui = item.jingchoushui <= double.Epsilon ? Math.Abs((double)item.fluctuate * 0.025) : item.jingchoushui;
+                    item.jingchoushui = Tools.FormatDouble(item.jingchoushui);
+                    item.transfer = item.take_in + item.fluctuate - item.other;
+                    member t_member = DBUtil.GetInstance().GetEntityByWhere<member>("game_id='" + item.member_name + "'");
+                    item.member_init_balance = item.member_init_balance < double.Epsilon ? t_member.first_balance : item.member_init_balance;
+                    m_desk_income += item.jingchoushui + item.pure_insure - item.other;
+                    m_desk_union += item.pure_fluctuate + item.pure_insure;
+                }
+                m_desk.income = m_desk.income < double.Epsilon ? m_desk_income : m_desk.income;
+                m_desk.league = m_desk.league < double.Epsilon ? m_desk_union : m_desk.league;
+                m_desk.income = Tools.FormatDouble(m_desk.income);
+                m_desk.league = Tools.FormatDouble(m_desk.league);
+            }
             dgv_settle.DataSource = m_bill_list;
             
         }
@@ -151,6 +160,11 @@ namespace dz_manager
                     }
                 }
             }
+
+        }
+
+        private void WinSettleFinish_Load(object sender, EventArgs e)
+        {
 
         }
     }

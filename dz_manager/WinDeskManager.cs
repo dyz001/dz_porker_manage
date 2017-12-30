@@ -17,6 +17,7 @@ namespace dz_manager
         const int MAX_COLUMN = 8;
         const int CELL_WIDTH = 120;
         const int CELL_HEIGHT = 120;
+        const int MAX_DESK_NUM = 200;
         protected DlgAddDesk m_wAddDesk;
         protected Panel pnl_template;
         protected Cell cell_template;
@@ -98,7 +99,7 @@ namespace dz_manager
         protected void InitDeskData()
         {
             m_curDeskData = DBUtil.GetInstance().GetLstItems<desk>("create_date >= '" + dtp_date.Value.ToShortDateString()
-                + "' and create_date < '" + dtp_date.Value.AddDays(1).ToShortDateString() + "'");
+                + "' and create_date < '" + dtp_date.Value.AddDays(1).ToShortDateString() + "'", MAX_DESK_NUM);
             //init desk
             foreach (desk d in m_curDeskData)
             {
@@ -130,7 +131,7 @@ namespace dz_manager
             }
             m_dicCell.Clear();
             m_curDeskData = DBUtil.GetInstance().GetLstItems<desk>("create_date >= '" + dtp_date.Value.ToShortDateString()
-                + "' and create_date < '" + dtp_date.Value.AddDays(1).ToShortDateString() + "'");
+                + "' and create_date < '" + dtp_date.Value.AddDays(1).ToShortDateString() + "'", MAX_DESK_NUM);
 
             //init desk
             foreach(desk d in m_curDeskData)
@@ -162,6 +163,7 @@ namespace dz_manager
             desk_cell.SetData(desk_no, state);
             desk_cell.SetBackGroundColor(Color.Gray);
             this.tlp_main.Controls.Add(desk_cell.GetMainPnl());
+            desk_cell.GetMainPnl().BackColor = (state == Constant.WIN_DESK_OVER ? Color.Red : Color.Green);
             //this.tlp_main.Controls.Add(new Button());
             this.tlp_main.Controls.SetChildIndex(desk_cell.GetMainPnl(), 1);
             //desk_cell.SetVisible(true);
@@ -178,6 +180,11 @@ namespace dz_manager
         }
 
         private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            RefreshDesk();
+        }
+
+        private void dtp_date_ValueChanged(object sender, EventArgs e)
         {
             RefreshDesk();
         }

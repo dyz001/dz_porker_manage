@@ -102,7 +102,7 @@ namespace dz_manager
 
         private void btn_out_account_Click(object sender, EventArgs e)
         {
-            WinMain.GetInstance().ShowFinishDeskWin(txt_desk_no.Text);
+            WinMain.GetInstance().ShowFinishDeskWin(txt_desk_no.Text, true);
         }
     }
 }

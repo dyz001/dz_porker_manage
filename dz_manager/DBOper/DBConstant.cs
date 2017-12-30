@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using dz_manager;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -44,16 +45,24 @@ namespace DataInput.DBOper
             //m_lstStation = new List<station>();
             if(m_mysqlConn == null)
             {
-                string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, auth_data.DBPass, auth_data.DBName, auth_data.DBPort);
+                string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, Tools.Decrypt(auth_data.DBPass), auth_data.DBName, auth_data.DBPort);
                 m_mysqlConn = new MySqlConnection(connStr);
             }
             m_myAdapter = new MySqlDataAdapter();
         }
 
+        public void CloseConnection()
+        {
+            if (m_mysqlConn.State == ConnectionState.Open)
+            {
+                m_mysqlConn.Close();
+            }
+        }
+
         public static bool TryOpenDB(dz_manager.DBConfig.DBAuthData auth_data)
         {
             bool ret = true;
-            string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, auth_data.DBPass, auth_data.DBName, auth_data.DBPort);
+            string connStr = string.Format(m_connFormatStr, auth_data.DBHost, auth_data.DBUser, Tools.Decrypt(auth_data.DBPass), auth_data.DBName, auth_data.DBPort);
             MySqlConnection con = new MySqlConnection(connStr);
             try
             {
@@ -101,9 +110,17 @@ namespace DataInput.DBOper
             return GetLstBySql<T>(sql);
         }
 
-        public IList<T> GetLstItems<T>(string where)where T:class
+        public IList<T> GetLstItems<T>(string where, int count = 0)where T:class
         {
-            string sql = "select * from " + typeof(T).Name + " where " + where;
+            string sql = "";
+            if (count > 0)
+            {
+                sql = "select " + " * from " + typeof(T).Name + " where " + where + " limit " + count;
+            }
+            else
+            {
+                sql = "select * from " + typeof(T).Name + " where " + where;
+            }
             return GetLstBySql<T>(sql);
         }
 
@@ -270,6 +287,41 @@ namespace DataInput.DBOper
             }
             return ret > 0;
         }
+
+        public int UpdateItems<T>(string set_condition, string where = "")
+        {
+            BeginTrans();
+            int ret = 0;
+            try
+            {
+                string sql = "";
+                if(string.IsNullOrEmpty(set_condition))
+                {
+                    return 0;
+                }
+                if(string.IsNullOrEmpty(where))
+                {
+                    sql = "update " + typeof(T).Name + " set " + set_condition;
+                }
+                else
+                {
+                    sql = "update " + typeof(T).Name + " set " + set_condition + " where " + where;
+                }
+                m_myCommand.CommandText = sql;
+                m_myCommand.CommandType = CommandType.Text;
+                ret = m_myCommand.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                EndTrans();
+            }
+            return ret;
+        }
+
         public bool Update<T>(T ins)
         {
             BeginTrans();
@@ -291,7 +343,35 @@ namespace DataInput.DBOper
             return ret > 0;
         }
 
-      
+        public int Delete<T>(string where = "")
+        {
+            int ret = 0;
+            BeginTrans();
+            try
+            {
+                string sql = ""; 
+                if(string.IsNullOrEmpty(where))
+                {
+                    sql = "delete from " + typeof(T).Name;
+                }
+                else
+                {
+                    sql = "delete from " + typeof(T).Name + " where " + where;
+                }
+                m_myCommand.CommandText = sql;
+                m_myCommand.CommandType = CommandType.Text;
+                ret = m_myCommand.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                EndTrans();
+            }
+            return ret;
+        }
 
         public void SetStationDirty(bool param)
         {
